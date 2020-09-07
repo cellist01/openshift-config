@@ -1,0 +1,46 @@
+@   IN  SOA     dns.ocp4.internal.local. root.ocp4.internal.local. (
+                                                1001    ;Serial
+                                                3H      ;Refresh
+                                                15M     ;Retry
+                                                1W      ;Expire
+                                                1D      ;Minimum TTL
+                                                )
+
+;Name Server Information
+@      IN  NS      dns.ocp4.internal.local.
+
+;IP address of Name Server
+dns IN  A       10.50.3.181
+
+;A - Record HostName To IP Address
+master1	   IN	A	10.50.3.182
+master2	   IN	A	10.50.3.183
+master3	   IN	A	10.50.3.184
+etcd-0	   IN	A	10.50.3.182
+etcd-1	   IN	A	10.50.3.183
+etcd-2	   IN	A	10.50.3.184
+worker1	   IN	A	10.50.3.185
+worker2	   IN	A	10.50.3.186
+worker3	   IN	A	10.50.3.190
+router1	   IN	A	10.50.3.187
+router2	   IN	A	10.50.3.188
+infra1	   IN	A	10.50.3.199
+infra2	   IN	A	10.50.3.202
+infra3	   IN	A	10.50.3.203
+bootstrap  IN	A	10.50.3.189
+mirror-registry  IN	A	10.50.3.230
+mirror-registry  IN	A	172.168.1.35
+
+
+; openshift4 Load Balancer
+api	   IN	A	10.50.3.191
+api-int	   IN	A	10.50.3.191
+*.apps	   IN	A	10.50.3.191
+
+;etcd-0     IN   CNAME	master1
+;etcd-1     IN   CNAME	master2
+;etcd-2     IN   CNAME	master3
+
+_etcd-server-ssl._tcp.ocp4.internal.local. 86400 IN SRV 0 10 2380 etcd-0.ocp4.internal.local.
+_etcd-server-ssl._tcp.ocp4.internal.local. 86400 IN SRV 0 10 2380 etcd-1.ocp4.internal.local.
+_etcd-server-ssl._tcp.ocp4.internal.local. 86400 IN SRV 0 10 2380 etcd-2.ocp4.internal.local.
